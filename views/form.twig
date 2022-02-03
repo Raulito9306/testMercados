@@ -1,0 +1,54 @@
+{% extends 'index.twig' %}
+{% block body %}
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h2><i class="glyphicon glyphicon-edit"></i> {{nombre}}</h2>
+
+                <div class="box-icon">
+                    <a href="#" class="btn btn-setting btn-round btn-default"><i
+                            class="glyphicon glyphicon-cog"></i></a>
+                    <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                            class="glyphicon glyphicon-chevron-up"></i></a>
+                    <a href="#" class="btn btn-close btn-round btn-default"><i
+                            class="glyphicon glyphicon-remove"></i></a>
+                </div>
+            </div>
+            <div class="box-content">
+                <form role="form" action="{{action}}" method="post">
+                    <div class="form-group">
+                       <input name="id" class="form- hidden" value={{id}}>  
+                        <label for="exampleInputEmail1">Nombre</label>
+                        {% if action=="/addItem"%}
+                            <input name="name" class="form-control" placeholder="Entre el nombre">  
+                        {% else %}
+                            <input name="name" class="form-control" placeholder="Entre el nombre" value={{nombre}}>
+                        {% endif %}                       
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Direccion</label>
+                        <input name="address" class="form-control" placeholder="Entre la direccion" value={{direccion}}>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Descripcion</label>
+                        <input name="description" class="form-control" placeholder="Entre la descripcion"
+                            value={{descripcion}}>
+                    </div>
+                    {% if action != 'none' %}
+                    <button type="submit" class="btn btn-default">Submit</button>
+                     <a class="btn btn-danger" href="/"> Cancelar</a>
+                    {% else %}
+                    <a class="btn btn-success" href="/"><i class="glyphicon glyphicon-arrow-left"></i>
+                        Back</a>
+                    {% endif %}
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!--/span-->
+
+</div>
+<!--/row-->
+{% endblock %}
